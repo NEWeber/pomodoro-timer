@@ -1,4 +1,4 @@
-const numberOfSecondsIn25Min = 25 * 60;
+const numberOfMillisecondsIn25Min = 25 * 60 * 1000;
 
 export default {
   namespaced: true,
@@ -7,7 +7,7 @@ export default {
   },
   mutations: {
     resetTimer(state) {
-      state.timeLeft = numberOfSecondsIn25Min;
+      state.timeLeft = numberOfMillisecondsIn25Min;
     },
     updateTimeLeft(state, newTime) {
       state.timeLeft = newTime;
