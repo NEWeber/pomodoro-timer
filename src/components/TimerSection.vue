@@ -1,7 +1,8 @@
 <template>
   <div>
     <div class="time-display">
-      {{ timeLeft }}
+      <!-- {{ timeLeft }} -->
+      25:00
     </div>
   </div>
 </template>
