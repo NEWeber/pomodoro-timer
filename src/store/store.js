@@ -1,6 +1,8 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 
+import timerModule from './modules/timer';
+
 Vue.use(Vuex);
 
 export default new Vuex.Store({
@@ -12,5 +14,8 @@ export default new Vuex.Store({
   },
   actions: {
 
+  },
+  modules: {
+    timer: timerModule,
   },
 });
