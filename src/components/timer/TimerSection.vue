@@ -26,13 +26,6 @@ export default {
   filters: {
     time: timeFilter,
   },
-  watch: {
-    timerRunning() {
-      if (this.timerRunning) {
-        this.debouncedUpdateTime();
-      }
-    },
-  },
   created() {
     this.debouncedUpdateTime = debounce(this.updateTime, 500);
   },
@@ -57,6 +50,7 @@ export default {
     startTimer() {
       this.startTime = Date.now();
       this.timerRunning = true;
+      this.debouncedUpdateTime();
     },
   },
 };
