@@ -44,7 +44,9 @@ export default {
       } else {
         this.secondsLeft = this.startingSeconds - secondsElapsed;
       }
-      if (this.secondsLeft <= 0 && this.minutuesLeft <= 0) this.timerRunning = false;
+      if (this.secondsLeft === 0 && this.minutesLeft === 0) {
+        this.timerRunning = false;
+      }
       if (this.timerRunning) this.debouncedUpdateTime();
     },
     startTimer() {
