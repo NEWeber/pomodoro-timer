@@ -1,7 +1,12 @@
 <template>
   <div>
     <div class="time-display">
+<<<<<<< HEAD
       {{minutesLeft}}:{{secondsLeft}} <br/>
+=======
+      <!-- {{ startTime -  }} -->
+      25:00
+>>>>>>> 9f9a9587137266dfc24994b8aac0ceec1b6e99d3
     </div>
     <button @click="startTimer()">Start Timer!</button>
   </div>
@@ -12,6 +17,7 @@ import { debounce } from 'lodash';
 
 export default {
   name: 'TimerSection',
+<<<<<<< HEAD
   data() {
     return {
       startTime: 0,
@@ -55,6 +61,16 @@ export default {
       this.timerRunning = true;
     },
   },
+=======
+  methods: {
+    startTimer() {
+      const startTime = new Date(Date.now());
+      console.log(startTime);
+      console.log(startTime.toTimeString(startTime));
+    },
+  },
+  // 25 - (now - startTime )
+>>>>>>> 9f9a9587137266dfc24994b8aac0ceec1b6e99d3
 };
 
 </script>
