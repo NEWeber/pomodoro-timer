@@ -9,6 +9,7 @@
 
 <script>
 import { debounce } from 'lodash';
+import { mapMutations, mapGetters } from 'vuex';
 import timeFilter from './time-filter';
 
 export default {
@@ -16,9 +17,8 @@ export default {
   data() {
     return {
       startTime: 0,
-      timerRunning: false,
       startingMinutes: 25,
-      startingSeconds: 60,
+      startingSeconds: 60, // consider rewrite to make this start at 0
       minutesLeft: 25,
       secondsLeft: 0,
     };
@@ -30,6 +30,7 @@ export default {
     this.debouncedUpdateTime = debounce(this.updateTime, 500);
   },
   methods: {
+    ...mapMutations('timer', ['timerOff', 'timerOn']),
     updateTime() {
       const currentTime = Date.now();
       const totalSecondsElapsed = Math.floor((currentTime - this.startTime) / 1000);
@@ -45,15 +46,18 @@ export default {
         this.secondsLeft = this.startingSeconds - secondsElapsed;
       }
       if (this.secondsLeft === 0 && this.minutesLeft === 0) {
-        this.timerRunning = false;
+        this.timerOff();
       }
-      if (this.timerRunning) this.debouncedUpdateTime();
+      if (this.isTimerRunning) this.debouncedUpdateTime();
     },
     startTimer() {
       this.startTime = Date.now();
-      this.timerRunning = true;
+      this.timerOn();
       this.debouncedUpdateTime();
     },
+  },
+  computed: {
+    ...mapGetters('timer', ['isTimerRunning']),
   },
 };
 
