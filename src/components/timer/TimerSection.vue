@@ -30,13 +30,14 @@ export default {
     this.debouncedUpdateTime = debounce(this.updateTime, 500);
   },
   methods: {
+    ...mapMutations(['pomodoroComplete']),
     ...mapMutations('timer', ['timerOff', 'timerOn']),
     updateTime() {
       const currentTime = Date.now();
       const totalSecondsElapsed = Math.floor((currentTime - this.startTime) / 1000);
       const secondsElapsed = totalSecondsElapsed % 60;
       // So that the time rolls over properly
-      // (i.e. immediatly goes to 24 on start, then 24:01, 24:00, 23:59)
+      // (i.e. immediately goes to 24 on start, then 24:01, 24:00, 23:59)
       const extraMinute = secondsElapsed > 0 ? 1 : 0;
       const minutesElapsed = ((totalSecondsElapsed - secondsElapsed) / 60) + extraMinute;
       this.minutesLeft = this.startingMinutes - minutesElapsed;
@@ -47,6 +48,7 @@ export default {
       }
       if (this.secondsLeft === 0 && this.minutesLeft === 0) {
         this.timerOff();
+        this.pomodoroComplete();
       }
       if (this.isTimerRunning) this.debouncedUpdateTime();
     },
@@ -57,6 +59,7 @@ export default {
     },
   },
   computed: {
+    ...mapGetters(['completedPomodoros']),
     ...mapGetters('timer', ['isTimerRunning']),
   },
 };
