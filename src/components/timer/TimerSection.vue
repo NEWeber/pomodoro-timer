@@ -17,10 +17,10 @@ export default {
   data() {
     return {
       startTime: 0,
-      startingMinutes: 25,
-      startingSeconds: 60, // consider rewrite to make this start at 0
-      minutesLeft: 25,
-      secondsLeft: 0,
+      startingMinutes: 1,
+      startingSeconds: 5, // consider rewrite to make this start at 0
+      minutesLeft: 0,
+      secondsLeft: 5,
     };
   },
   filters: {
