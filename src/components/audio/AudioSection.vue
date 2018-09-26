@@ -2,12 +2,12 @@
   <div>
     <audio v-if="isTimerRunning" autoplay loop
         id="play-during-pomodoro">
-        <source src="../../assets/chips.wav" type="audio/wav" />
+        <source src="../../assets/ticking.wav" type="audio/wav" />
         Your browser does not support the <code>audio</code> element.
     </audio>
     <audio
-      id="completed">
-        <source src="../../assets/alarm.mp3" type="audio/mp3" />
+      ref="completed">
+        <source src="../../assets/clock-chime.wav" type="audio/wav" />
         Your browser does not support the <code>audio</code> element.
     </audio>
   </div>
@@ -26,7 +26,10 @@ export default {
   },
   watch: {
     completedPomodoros() {
-      setTimeout(() => { document.getElementById('completed').setAttribute('autoplay', ''); }, 1500);
+      setTimeout(() => {
+        this.$refs.completed.play();
+        // setTimeout(() => { this.$refs.completed.removeAttribute('autoplay'); }, 3000);
+      }, 1500);
     },
   },
   methods: {

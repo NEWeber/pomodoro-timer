@@ -18,9 +18,9 @@ export default {
     return {
       startTime: 0,
       startingMinutes: 1,
-      startingSeconds: 5, // consider rewrite to make this start at 0
+      startingSeconds: 20, // consider rewrite to make this start at 0
       minutesLeft: 0,
-      secondsLeft: 5,
+      secondsLeft: 20,
     };
   },
   filters: {
