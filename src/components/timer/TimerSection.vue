@@ -3,7 +3,9 @@
     <div class="time-display">
       {{minutesLeft | time}}:{{secondsLeft | time}} <br/>
     </div>
-    <button @click="startTimer()">Start Timer!</button>
+    <button v-if="!isTimerRunning" @click="startTimer()">Start Pomodoro!</button>
+    <button v-if="isTimerRunning" @click="resetTimer()">Void Pomodoro</button>
+
   </div>
 </template>
 
@@ -33,29 +35,37 @@ export default {
     ...mapMutations(['pomodoroComplete']),
     ...mapMutations('timer', ['timerOff', 'timerOn']),
     updateTime() {
-      const currentTime = Date.now();
-      const totalSecondsElapsed = Math.floor((currentTime - this.startTime) / 1000);
-      const secondsElapsed = totalSecondsElapsed % 60;
-      // So that the time rolls over properly
-      // (i.e. immediately goes to 24 on start, then 24:01, 24:00, 23:59)
-      const extraMinute = secondsElapsed > 0 ? 1 : 0;
-      const minutesElapsed = ((totalSecondsElapsed - secondsElapsed) / 60) + extraMinute;
-      this.minutesLeft = this.startingMinutes - minutesElapsed;
-      if (secondsElapsed === 0) {
-        this.secondsLeft = 0;
-      } else {
-        this.secondsLeft = this.startingSeconds - secondsElapsed;
+      if (this.isTimerRunning) { // catch if a user has reset in the middle of call
+        const currentTime = Date.now();
+        const totalSecondsElapsed = Math.floor((currentTime - this.startTime) / 1000);
+        const secondsElapsed = totalSecondsElapsed % 60;
+        // So that the time rolls over properly
+        // (i.e. immediately goes to 24 on start, then 24:01, 24:00, 23:59)
+        const extraMinute = secondsElapsed > 0 ? 1 : 0;
+        const minutesElapsed = ((totalSecondsElapsed - secondsElapsed) / 60) + extraMinute;
+        this.minutesLeft = this.startingMinutes - minutesElapsed;
+        if (secondsElapsed === 0) {
+          this.secondsLeft = 0;
+        } else {
+          this.secondsLeft = this.startingSeconds - secondsElapsed;
+        }
+        if (this.secondsLeft === 0 && this.minutesLeft === 0) {
+          this.timerOff();
+          this.pomodoroComplete();
+        }
+        if (this.isTimerRunning) this.debouncedUpdateTime();
       }
-      if (this.secondsLeft === 0 && this.minutesLeft === 0) {
-        this.timerOff();
-        this.pomodoroComplete();
-      }
-      if (this.isTimerRunning) this.debouncedUpdateTime();
     },
     startTimer() {
       this.startTime = Date.now();
       this.timerOn();
       this.debouncedUpdateTime();
+    },
+    resetTimer() {
+      this.timerOff();
+      // TODO: Got to be a better way to code the following:
+      this.secondsLeft = 0;
+      this.minutesLeft = 25;
     },
   },
   computed: {
