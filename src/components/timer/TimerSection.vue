@@ -82,8 +82,11 @@ export default {
 
 <style lang="scss">
 .time-section {
-  border: 2px solid blue;
-  max-width: 600px;
+  // border: 2px solid #006DF0;
+  border: 2px solid #7AB4EF;
+  border-radius: 5px;
+  max-width: 500px;
+  padding: 20px 25px 25px 25px;
 }
 .time-display {
   position: relative;
