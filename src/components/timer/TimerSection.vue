@@ -1,10 +1,14 @@
 <template>
-  <div>
+  <div class="time-section">
     <div class="time-display">
       {{minutesLeft | time}}:{{secondsLeft | time}} <br/>
     </div>
-    <button v-if="!isTimerRunning" @click="startTimer()">Start Pomodoro!</button>
-    <button v-if="isTimerRunning" @click="resetTimer()">Void Pomodoro</button>
+    <button v-if="!isTimerRunning" @click="startTimer()">
+      <img src="@/assets/play-button.png" alt="Start Timer!"/>
+    </button>
+    <button v-if="isTimerRunning" @click="resetTimer()">
+      <img src="@/assets/refresh-page-arrow.png" alt="Reset Timer"/>
+    </button>
 
   </div>
 </template>
@@ -76,6 +80,25 @@ export default {
 
 </script>
 
-<style lang="sass">
-
+<style lang="scss">
+.time-section {
+  border: 2px solid blue;
+  max-width: 600px;
+}
+.time-display {
+  position: relative;
+  font-size: 500%;
+}
+  button {
+    background: 0;
+    border: none;
+    cursor: pointer;
+    img {
+      height: 50px;
+      width: 50px;
+    }
+    button:hover {
+      border: 1px solid orange;
+    }
+  }
 </style>
