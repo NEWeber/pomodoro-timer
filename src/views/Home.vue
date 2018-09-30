@@ -2,6 +2,7 @@
   <div class="home">
     <TimerSection></TimerSection>
     <AudioSection></AudioSection>
+    <CookieSection></CookieSection>
   </div>
 </template>
 
@@ -10,6 +11,7 @@
 import HelloWorld from '@/components/HelloWorld.vue';
 import TimerSection from '@/components/timer/TimerSection.vue';
 import AudioSection from '@/components/audio/AudioSection.vue';
+import CookieSection from '@/components/cookie/CookieSection.vue';
 
 export default {
   name: 'home',
@@ -17,6 +19,7 @@ export default {
     HelloWorld,
     TimerSection,
     AudioSection,
+    CookieSection,
   },
 };
 </script>

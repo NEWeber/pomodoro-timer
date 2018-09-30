@@ -28,7 +28,6 @@ export default {
     completedPomodoros() {
       setTimeout(() => {
         this.$refs.completed.play();
-        // setTimeout(() => { this.$refs.completed.removeAttribute('autoplay'); }, 3000);
       }, 1500);
     },
   },

@@ -18,10 +18,10 @@ reset button:
 
 TODO:
 - ~Void pomodoro button to reset clock~
-- Style the page!
+- ~Style the page!~
 - Create cookie with:
   - Sub status
-  - no completed pomodoros
+  - number of completed pomodoros
   - declined (don't show till next threshold)
 - Read cookie and show modal on 2, 5, 10, 20, 50, 90, 120 completed 
 - Create sub modal
@@ -31,9 +31,12 @@ TODO:
 - Create banner adds for pomodoro products
 - List sound & icon attribution in footer
 - Google analytics
-- Celebration Effect?
+- remove nav at top
+- fix button on timer to show/hide icon & call different function, rather than swapping button (accessible, focus stays)
 
 v. 2:
+- Celebration Effect?
+- Nicer buttons (drop shadow, animate on click, etc.)
 - Vary pomodoro length?
 - Different sound selections
 - Blog
