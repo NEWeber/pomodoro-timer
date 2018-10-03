@@ -16,19 +16,20 @@ export default {
   },
   // This is the right part of the lifecycle right now, may need to change later for nav
   mounted() {
-    console.log('in mounted');
     this.$cookie.set('lastVisited', Date.now());
   },
   watch: {
     completedPomodoros() {
-      // increment the completed pomodoros in the cookie and tell the modal to pop if at threshold
+      let numberCompleted = +this.$cookie.get('completed') || 0;
+      numberCompleted += 1;
+      // pop modal if over threshold
+      this.$cookie.set('completed', numberCompleted);
     },
   },
   methods: {
   },
   computed: {
     ...mapGetters(['completedPomodoros']),
-    ...mapGetters('timer', ['isTimerRunning']),
   },
 };
 

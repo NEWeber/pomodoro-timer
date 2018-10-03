@@ -19,10 +19,9 @@ reset button:
 TODO:
 - ~Void pomodoro button to reset clock~
 - ~Style the page!~
-- Create cookie with:
-  - Sub status
-  - number of completed pomodoros
-  - declined (don't show till next threshold)
+- ~Create cookie with:~
+  - ~number of completed pomodoros~
+  - ~last visited~
 - Read cookie and show modal on 2, 5, 10, 20, 50, 90, 120 completed 
 - Create sub modal
   - Invite to join list
@@ -35,15 +34,18 @@ TODO:
 - fix button on timer to show/hide icon & call different function, rather than swapping button (accessible, focus stays)
 
 v. 2:
-- Celebration Effect?
 - Nicer buttons (drop shadow, animate on click, etc.)
 - Vary pomodoro length?
 - Different sound selections
 - Blog
 - Daily list/commit to task/start pomodoro
 - Check off todo items
+- Celebration Effect?
 
 v. 3 
+- Cookie update, add:
+  - declined (don't show till next threshold)? Only pops modal when threshold is crossed, so maybe don't need this?
+  - Sub status
 - Activity inventory
 - status checking
 - Record sheet
