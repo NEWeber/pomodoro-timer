@@ -22,7 +22,7 @@ TODO:
 - ~Create cookie with:~
   - ~number of completed pomodoros~
   - ~last visited~
-- Read cookie and show modal on 2, 5, 10, 20, 50, 90, 120 completed 
+- ~Read cookie and show modal on 2, 5, 10, 20, 50, 90, 120 completed~
 - Create sub modal
   - Invite to join list
   - form with email and first name
