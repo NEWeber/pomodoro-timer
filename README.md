@@ -24,14 +24,20 @@ TODO:
   - ~last visited~
 - ~Read cookie and show modal on 2, 5, 10, 20, 50, 90, 120 completed~
 - Create sub modal
-  - Invite to join list
-  - form with email and first name
+  - ~Invite to join list~
+  - ~form with email and first name~
+  - Buttons: Decline closes modal, sign up verifies the form fields, 
+    sends signal to API and displays thank you/confirm email message
+  - ~Make responsive~
   - api to send to 3rd party sub place on submit
 - Create banner adds for pomodoro products
 - List sound & icon attribution in footer
 - Google analytics
 - remove nav at top
 - fix button on timer to show/hide icon & call different function, rather than swapping button (accessible, focus stays)
+- Make wav files into mp3 files & optimize
+- Add the number completed to the store and read off cookie on load to set the number.
+- Fix style scoping in `TimerSection.vue`
 
 v. 2:
 - Nicer buttons (drop shadow, animate on click, etc.)
