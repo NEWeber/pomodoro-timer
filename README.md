@@ -22,15 +22,25 @@ TODO:
 - ~Create cookie with:~
   - ~number of completed pomodoros~
   - ~last visited~
-- ~Read cookie and show modal on 2, 5, 10, 20, 50, 90, 120 completed~
+- Read cookie and show modal on 2, 5, 10, 20, 50, 90, 120 completed
 - Create sub modal
   - ~Invite to join list~
   - ~form with email and first name~
-  - Buttons: Decline closes modal, sign up verifies the form fields, 
-    sends signal to API and displays thank you/confirm email message
   - ~Make responsive~
+  - Buttons: 
+    - ~Decline closes modal (can't close otherwise)~ 
+    - sign up:
+      - ~verifies the form fields~
+      - ~displays thank you/confirm email message~
+      - sends signal to API
   - api to send to 3rd party sub place on submit
-- Create banner adds for pomodoro products
+  - Style modal
+    - Style buttons
+    - Style Errors
+    - Style Form
+      - Style labels
+      - Style input boxes
+- Create banner ads for pomodoro products
 - List sound & icon attribution in footer
 - Google analytics
 - remove nav at top
