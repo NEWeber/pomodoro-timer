@@ -32,9 +32,14 @@ export default {
       numberCompleted += 1;
       this.$cookie.set('completed', numberCompleted, { expires: '3M' });
       // pop modal if at offer point
-      if (this.offerEmail.indexOf(numberCompleted) !== -1) {
+
+      // TODO: restore the if statement below when done with dev
+
+      // if (this.offerEmail.indexOf(numberCompleted) !== -1) {
+      setTimeout(() => {
         this.$modal.show('sign-up-modal');
-      }
+      }, 1500);
+      // }
     },
   },
   methods: {
