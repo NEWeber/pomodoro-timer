@@ -40,14 +40,17 @@ TODO:
     - Style Form
       - Style labels
       - Style input boxes
-- Create banner ads for pomodoro products
+- ~Make wav files into mp3 files & optimize~
 - List sound & icon attribution in footer
 - Google analytics
 - remove nav at top
-- fix button on timer to show/hide icon & call different function, rather than swapping button (accessible, focus stays)
-- Make wav files into mp3 files & optimize
-- Add the number completed to the store and read off cookie on load to set the number.
+
+v. 1.1
+- Make transition from end of timer/restart timer better.
 - Fix style scoping in `TimerSection.vue`
+- Add the number completed to the store and read off cookie on load to set the number.
+- Create banner ads for pomodoro products
+- fix button on timer to show/hide icon & call different function, rather than swapping button (accessible, focus stays)
 
 v. 2:
 - Nicer buttons (drop shadow, animate on click, etc.)

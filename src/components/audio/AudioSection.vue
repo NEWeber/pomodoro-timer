@@ -2,12 +2,12 @@
   <div>
     <audio v-if="isTimerRunning" autoplay loop
         id="play-during-pomodoro">
-        <source src="@/assets/ticking.wav" type="audio/wav" />
+        <source src="@/assets/ticking.mp3" type="audio/mp3" />
         Your browser does not support the <code>audio</code> element.
     </audio>
     <audio
       ref="completed">
-        <source src="@/assets/clock-chime.wav" type="audio/wav" />
+        <source src="@/assets/clock-chime.mp3" type="audio/mp3" />
         Your browser does not support the <code>audio</code> element.
     </audio>
   </div>
