@@ -41,9 +41,9 @@ TODO:
       - Style labels
       - Style input boxes
 - ~Make wav files into mp3 files & optimize~
-- List sound & icon attribution in footer
-- Google analytics
 - ~remove nav at top~
+- ~List sound & icon attribution in footer~
+- Google analytics
 
 v. 1.1
 - Make transition from end of timer/restart timer better.
