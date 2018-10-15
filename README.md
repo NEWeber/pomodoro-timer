@@ -32,8 +32,8 @@ TODO:
     - sign up:
       - ~verifies the form fields~
       - ~displays thank you/confirm email message~
-      - sends signal to API
-  - api to send to 3rd party sub place on submit
+      - ~sends signal to API~
+  - ~api to send to 3rd party sub place on submit~
   - Style modal
     - Style buttons
     - Style Errors
@@ -44,6 +44,10 @@ TODO:
 - ~remove nav at top~
 - ~List sound & icon attribution in footer~
 - Google analytics
+
+v 1.0.1
+- Catch server-side verification errors in `SignUp.vue`
+- Use `hasSignedUp` in store properly and use in `SignUp.vue`
 
 v. 1.1
 - Make transition from end of timer/restart timer better.

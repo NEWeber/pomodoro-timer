@@ -40,6 +40,8 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex';
+
 export default {
   name: 'SignUp',
   data() {
@@ -51,12 +53,13 @@ export default {
     };
   },
   methods: {
+    ...mapActions('email', ['signUpRequest']),
     beforeOpen() {
       this.canClose = false;
     },
     beforeClose(event) {
       // TODO: still allow close on ESC
-      if (!this.canClose) {
+      if (!this.canClose && !this.hasSignedUp) {
         // TODO: highlight "No thanks" button
         event.stop();
       }
@@ -68,6 +71,10 @@ export default {
     mailSubmit() {
       this.errors = [];
       if (this.verifyName() && this.verifyEmail()) {
+        this.signUpRequest({
+          email: this.$refs.emailField.value,
+          first_name: this.$refs.nameField.value,
+        });
         this.hasSignedUp = true;
         this.canClose = true;
         // Submit to mail API
