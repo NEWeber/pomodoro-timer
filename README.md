@@ -42,7 +42,7 @@ TODO:
 - ~Make wav files into mp3 files & optimize~
 - ~remove nav at top~
 - ~List sound & icon attribution in footer~
-- Google analytics
+- ~Google analytics~
 
 v 1.0.1
 - Catch server-side verification errors in `SignUp.vue`
