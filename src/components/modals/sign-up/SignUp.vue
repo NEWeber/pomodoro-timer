@@ -20,15 +20,19 @@
             <li v-for="error in errors" :key="error.id">{{ error }}</li>
           </ul>
         </p>
-        <label for="name">Name</label>
-        <input id="name" ref="nameField" type="text" placeholder="First Name">
+        <div class="form-container">
+          <label for="name">Name</label>
+          <input id="name" ref="nameField" type="text" placeholder="First Name">
+        </div>
 
-        <label for="email">Email</label>
-        <input id="email" ref="emailField" type="email" placeholder="Email">
+        <div class="form-container">
+          <label for="email">Email</label>
+          <input id="email" ref="emailField" type="email" placeholder="Email">
+        </div>
       </form>
       <div class="button-set">
-        <button id="submit" @click="mailSubmit">Sign up!</button>
         <button id="decline" @click="decline">No thanks</button>
+        <button id="submit" @click="mailSubmit">Sign up!</button>
       </div>
     </div>
     <div class="cta-copy" v-if="hasSignedUp">
@@ -106,11 +110,50 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" >
   .cta-copy {
     padding:30px;
     text-align: center;
     font-size: 150%;
     line-height: 2em;
+    @media(max-width: 450px) {
+      font-size: 100%;
+    }
+  }
+  .form-container {
+    display: inline-block;
+  }
+  label {
+    margin-right: 15px;
+    margin-left: 15px;
+    font-size: 100%;
+    position: relative;
+    top: 3px;
+    @media(max-width: 380px) {
+      display: none;
+    }
+  }
+  input {
+    margin-left: 5px;
+  }
+  .button-set {
+    button {
+      margin-top: 10px;
+      font-size: 125%;
+      margin-right: 10px;
+    }
+    #decline {
+      background: #9c1414;
+      color: #FFF;
+      border: 2px solid #7AB4EF;
+    }
+    #submit {
+      background: blue;
+      color: #FFF;
+      border: 2px solid #7AB4EF;
+    }
+    @media(max-width: 450px) {
+      display: block;
+    }
   }
 </style>

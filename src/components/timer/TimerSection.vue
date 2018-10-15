@@ -82,7 +82,6 @@ export default {
 
 <style lang="scss">
 .time-section {
-  // border: 2px solid #006DF0;
   border: 2px solid #7AB4EF;
   border-radius: 5px;
   max-width: 500px;
@@ -91,6 +90,9 @@ export default {
 .time-display {
   position: relative;
   font-size: 500%;
+  @media(max-width: 400px) {
+    font-size: 300%;
+  }
 }
   button {
     background: 0;

@@ -22,24 +22,23 @@ TODO:
 - ~Create cookie with:~
   - ~number of completed pomodoros~
   - ~last visited~
-- Read cookie and show modal on 2, 5, 10, 20, 50, 90, 120 completed
-- Create sub modal
+- ~Read cookie and show modal on 2, 5, 10, 20, 50, 90, 120 completed~
+- ~Create sub modal~
   - ~Invite to join list~
   - ~form with email and first name~
   - ~Make responsive~
-  - Buttons: 
+  - ~Buttons:~ 
     - ~Decline closes modal (can't close otherwise)~ 
-    - sign up:
+    - ~sign up:~
       - ~verifies the form fields~
       - ~displays thank you/confirm email message~
       - ~sends signal to API~
   - ~api to send to 3rd party sub place on submit~
-  - Style modal
-    - Style buttons
-    - Style Errors
-    - Style Form
-      - Style labels
-      - Style input boxes
+  - ~Style modal~
+    - ~Style buttons~
+    - ~Style Form~
+      - ~Style labels~
+      - ~Style input boxes~
 - ~Make wav files into mp3 files & optimize~
 - ~remove nav at top~
 - ~List sound & icon attribution in footer~
@@ -48,6 +47,8 @@ TODO:
 v 1.0.1
 - Catch server-side verification errors in `SignUp.vue`
 - Use `hasSignedUp` in store properly and use in `SignUp.vue`
+- Have a button to sign up for email after first offer without waiting for modal to come up again
+- Fix audio so that it starts clicking after 1 sec, not immediately. 
 
 v. 1.1
 - Make transition from end of timer/restart timer better.
@@ -55,6 +56,10 @@ v. 1.1
 - Add the number completed to the store and read off cookie on load to set the number.
 - Create banner ads for pomodoro products
 - fix button on timer to show/hide icon & call different function, rather than swapping button (accessible, focus stays)
+- Style Modal
+  - Style Errors
+- Add cookie disclaimer
+
 
 v. 2:
 - Nicer buttons (drop shadow, animate on click, etc.)
