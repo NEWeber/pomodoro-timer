@@ -1,21 +1,19 @@
-const numberOfSecondsIn25Min = 25 * 60;
-
 export default {
   namespaced: true,
-  store: {
-    timeLeft: 0,
+  state: {
+    timerRunning: false,
   },
   mutations: {
-    resetTimer(state) {
-      state.timeLeft = numberOfSecondsIn25Min;
+    timerOn(state) {
+      state.timerRunning = true;
     },
-    updateTimeLeft(state, newTime) {
-      state.timeLeft = newTime;
+    timerOff(state) {
+      state.timerRunning = false;
     },
   },
   getters: {
-    timeLeft(state) {
-      return state.timeLeft;
+    isTimerRunning(state) {
+      return state.timerRunning;
     },
   },
 };
