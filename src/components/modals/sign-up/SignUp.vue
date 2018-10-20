@@ -36,9 +36,7 @@
       </div>
     </div>
     <div class="cta-copy" v-if="hasSignedUp">
-      <p>Thanks for signing up!</p>
-      <p>Verify your email address!</p>
-      <p>That way we'll get your dose of Pomodoro coaching delivered right to you!</p>
+      <p>Thanks for signing up,I'll be in touch soon!</p>
     </div>
   </modal>
 </template>
