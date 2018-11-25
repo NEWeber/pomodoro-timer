@@ -1,6 +1,7 @@
 <template>
   <div>
-    <audio v-if="isTimerRunning" autoplay loop
+    <audio
+        ref="running" loop
         id="play-during-pomodoro">
         <source src="@/assets/ticking.mp3" type="audio/mp3" />
         Your browser does not support the <code>audio</code> element.
@@ -21,14 +22,22 @@ import { mapGetters } from 'vuex';
 export default {
   name: 'AudioSection',
   data() {
-    return {
-    };
+    return {};
   },
   watch: {
     completedPomodoros() {
       setTimeout(() => {
         this.$refs.completed.play();
       }, 1500);
+    },
+    isTimerRunning() {
+      if (this.isTimerRunning) {
+        setTimeout(() => {
+          this.$refs.running.play();
+        }, 1000);
+      } else {
+        this.$refs.running.load();
+      }
     },
   },
   methods: {

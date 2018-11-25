@@ -22,7 +22,7 @@ v 1.0.1
 - Catch server-side verification errors in `SignUp.vue`
 - Use `hasSignedUp` in store properly and use in `SignUp.vue`
 - Have a button to sign up for email after first offer without waiting for modal to come up again
-- Fix audio so that it starts clicking after 1 sec, not immediately. 
+- ~Fix audio so that it starts clicking after 1 sec, not immediately.~ 
 
 v. 1.1
 - Make transition from end of timer/restart timer better.
