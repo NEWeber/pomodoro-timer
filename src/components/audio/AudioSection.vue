@@ -25,7 +25,7 @@ export default {
     return {};
   },
   watch: {
-    completedPomodoros() {
+    completedPomodorosThisSession() {
       setTimeout(() => {
         this.$refs.completed.play();
       }, 1500);
@@ -43,7 +43,7 @@ export default {
   methods: {
   },
   computed: {
-    ...mapGetters(['completedPomodoros']),
+    ...mapGetters(['completedPomodoros', 'completedPomodorosThisSession']),
     ...mapGetters('timer', ['isTimerRunning']),
   },
 };

@@ -21,7 +21,8 @@ TODO:
 v 1.0.1
 - Catch server-side verification errors in `SignUp.vue`
 - Use `hasSignedUp` in store properly and use in `SignUp.vue`
-- Have a button to sign up for email after first offer without waiting for modal to come up again
+- ~Have a button to sign up for email after first offer without waiting for modal to come up again~
+  - Make copy for button modal different than the auto popped modal (take out "Great work!)
 - ~Fix audio so that it starts clicking after 1 sec, not immediately.~ 
 
 v. 1.1
