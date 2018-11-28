@@ -10,7 +10,7 @@
     width="80%"
     height="auto">
     <div class="cta-copy" v-if="!hasSignedUp">
-      Great work!
+      Keep up the great work!
       <br>Get inspiration to continue succeeding by email. Sign up:
       <form
         novalidate="true">
