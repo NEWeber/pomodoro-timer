@@ -1,7 +1,7 @@
 <template>
   <div>
     <sign-up-modal/>
-    <p v-if="completedPomodoros > 1">Get inspiration for your work!
+    <p v-if="completedPomodoros > 1 && !this.hasSignedUp">Get inspiration for your work!
       <button @click="showModal">Sign up</button>
       for our newsletter!</p>
   </div>
@@ -28,28 +28,36 @@ export default {
       { expires: '3M' },
     );
     this.setPomodoroComplete(+this.$cookie.get('completed') || 0);
-    console.log(this.completedPomodoros);
+    if (this.$cookie.get('signed-up') === 'true') {
+      this.signedUp();
+    }
   },
   watch: {
     completedPomodorosThisSession() {
       this.$cookie.set('completed', this.completedPomodoros, { expires: '3M' });
       // pop modal if at offer point
 
-      if (this.offerEmail.indexOf(this.completedPomodoros) !== -1) {
+      if (this.offerEmail.indexOf(this.completedPomodoros) !== -1 && !this.hasSignedUp) {
         setTimeout(() => {
           this.showModal();
         }, 1500);
       }
     },
+    hasSignedUp() {
+      this.$cookie.set('signed-up', true, { expires: '3M' });
+    },
   },
   methods: {
     ...mapMutations(['setPomodoroComplete']),
+    ...mapMutations('email', ['signedUp']),
     showModal() {
       this.$modal.show('sign-up-modal');
     },
   },
   computed: {
     ...mapGetters(['completedPomodoros', 'completedPomodorosThisSession']),
+    ...mapGetters('email', ['hasSignedUp']),
+
   },
 };
 
