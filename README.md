@@ -18,13 +18,6 @@ reset button:
 
 TODO:
 
-v 1.0.1
-- Catch server-side verification errors in `SignUp.vue`
-- ~Use `hasSignedUp` in store properly and use in `SignUp.vue`~
-- ~Have a button to sign up for email after first offer without waiting for modal to come up again~
-  - ~Make copy for button modal different than the auto popped modal (take out "Great work!)~ (opted for copy that works for both)
-- ~Fix audio so that it starts clicking after 1 sec, not immediately.~ 
-
 v. 1.1
 - Make transition from end of timer/restart timer better.
 - Fix style scoping in `TimerSection.vue`
@@ -33,6 +26,7 @@ v. 1.1
 - fix button on timer to show/hide icon & call different function, rather than swapping button (accessible, focus stays)
 - Style Modal
   - Style Errors
+  - Use semantic form field errors
 - Add cookie disclaimer
 
 

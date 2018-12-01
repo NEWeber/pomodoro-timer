@@ -14,10 +14,10 @@
       <br>Get inspiration to continue succeeding by email. Sign up:
       <form
         novalidate="true">
-        <p v-if="errors.length">
+        <p v-if="clientErrors.length">
           <b>Please correct the following error(s):</b>
           <ul>
-            <li v-for="error in errors" :key="error.id">{{ error }}</li>
+            <li v-for="error in clientErrors" :key="error.id">{{ error }}</li>
           </ul>
         </p>
         <div class="form-container">
@@ -42,17 +42,33 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex';
+import { mapActions, mapGetters } from 'vuex';
 
 export default {
   name: 'SignUp',
   data() {
     return {
-      hasSignedUp: false,
       canClose: false,
       displayErrors: false,
-      errors: [],
+      clientErrors: [],
     };
+  },
+  watch: {
+    getErrors() {
+      if (this.getErrors.length > 0) {
+        this.clientErrors = [];
+        this.getErrors.forEach((el) => {
+          if (el === 'invalid name') {
+            this.clientErrors.push('First name required');
+          } else if (el === 'invalid email') {
+            this.clientErrors.push('Invalid email');
+          }
+        });
+        this.displayErrors = true;
+      } else {
+        this.displayErrors = false;
+      }
+    },
   },
   methods: {
     ...mapActions('email', ['signUpRequest']),
@@ -71,15 +87,14 @@ export default {
       this.$modal.hide('sign-up-modal');
     },
     mailSubmit() {
-      this.errors = [];
+      this.clientErrors = [];
       if (this.verifyName() && this.verifyEmail()) {
+      // Submit to mail API
         this.signUpRequest({
           email: this.$refs.emailField.value,
           first_name: this.$refs.nameField.value,
         });
-        this.hasSignedUp = true;
         this.canClose = true;
-        // Submit to mail API
       } else {
         this.displayErrors = true;
       }
@@ -88,7 +103,7 @@ export default {
       let ret;
       if (this.$refs.nameField.value === '') {
         ret = false;
-        this.errors[this.errors.length] = 'First name required';
+        this.clientErrors[this.clientErrors.length] = 'First name required';
       } else {
         ret = true;
       }
@@ -100,10 +115,13 @@ export default {
       const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
       const result = re.test(String(email).toLowerCase());
       if (!result) {
-        this.errors[this.errors.length] = 'Invalid email';
+        this.clientErrors[this.clientErrors.length] = 'Invalid email';
       }
       return result;
     },
+  },
+  computed: {
+    ...mapGetters('email', ['hasSignedUp', 'getErrors']),
   },
 };
 </script>
