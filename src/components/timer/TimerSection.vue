@@ -24,7 +24,7 @@ export default {
     return {
       startTime: 0,
       startingMinutes: 25,
-      startingSeconds: 60, // consider rewrite to make this start at 0
+      startingSeconds: 0,
       minutesLeft: 25,
       secondsLeft: 0,
     };
@@ -43,16 +43,17 @@ export default {
         const currentTime = Date.now();
         const totalSecondsElapsed = Math.floor((currentTime - this.startTime) / 1000);
         const secondsElapsed = totalSecondsElapsed % 60;
-        // So that the time rolls over properly
-        // (i.e. immediately goes to 24 on start, then 24:01, 24:00, 23:59)
-        const extraMinute = secondsElapsed > 0 ? 1 : 0;
-        const minutesElapsed = ((totalSecondsElapsed - secondsElapsed) / 60) + extraMinute;
-        this.minutesLeft = this.startingMinutes - minutesElapsed;
-        if (secondsElapsed === 0) {
-          this.secondsLeft = 0;
-        } else {
+
+        const minutuesDecucted = (secondsElapsed - this.startingSeconds > 0 ? 1 : 0) +
+          ((totalSecondsElapsed - secondsElapsed) / 60);
+        this.minutesLeft = this.startingMinutes - minutuesDecucted;
+
+        if (secondsElapsed <= this.startingSeconds) {
           this.secondsLeft = this.startingSeconds - secondsElapsed;
+        } else {
+          this.secondsLeft = 60 - (secondsElapsed - this.startingSeconds);
         }
+
         if (this.secondsLeft === 0 && this.minutesLeft === 0) {
           this.timerOff();
           this.pomodoroComplete();
@@ -68,8 +69,8 @@ export default {
     resetTimer() {
       this.timerOff();
       // TODO: Got to be a better way to code the following:
-      this.secondsLeft = 0;
-      this.minutesLeft = 25;
+      this.secondsLeft = this.startingSeconds;
+      this.minutesLeft = this.startingMinutes;
     },
   },
   computed: {
