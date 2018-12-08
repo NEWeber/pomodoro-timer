@@ -19,7 +19,7 @@ reset button:
 TODO:
 
 v. 1.1
-- Make transition from end of timer/restart timer better.
+- ~Make transition from end of timer/restart timer better.~
 - Fix style scoping in `TimerSection.vue`
 - ~Add the number completed to the store and read off cookie on load to set the number.~
 - Create banner ads for pomodoro products

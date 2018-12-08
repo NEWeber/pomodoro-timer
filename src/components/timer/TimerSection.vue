@@ -3,10 +3,10 @@
     <div class="time-display">
       {{minutesLeft | time}}:{{secondsLeft | time}} <br/>
     </div>
-    <button v-if="!isTimerRunning" @click="startTimer()">
+    <button v-if="!isTimerRunning && !isTimerComplete" @click="startTimer()">
       <img src="@/assets/play-button.png" alt="Start Timer!"/>
     </button>
-    <button v-if="isTimerRunning" @click="resetTimer()">
+    <button v-if="isTimerRunning || isTimerComplete" @click="resetTimer()">
       <img src="@/assets/refresh-page-arrow.png" alt="Reset Timer"/>
     </button>
 
@@ -37,7 +37,7 @@ export default {
   },
   methods: {
     ...mapMutations(['pomodoroComplete']),
-    ...mapMutations('timer', ['timerOff', 'timerOn']),
+    ...mapMutations('timer', ['timerOff', 'timerOn', 'hasCompleted', 'readyToPlay']),
     updateTime() {
       if (this.isTimerRunning) { // catch if a user has reset in the middle of call
         const currentTime = Date.now();
@@ -56,6 +56,7 @@ export default {
 
         if (this.secondsLeft === 0 && this.minutesLeft === 0) {
           this.timerOff();
+          this.hasCompleted();
           this.pomodoroComplete();
         }
         if (this.isTimerRunning) this.debouncedUpdateTime();
@@ -68,14 +69,14 @@ export default {
     },
     resetTimer() {
       this.timerOff();
-      // TODO: Got to be a better way to code the following:
       this.secondsLeft = this.startingSeconds;
       this.minutesLeft = this.startingMinutes;
+      this.readyToPlay();
     },
   },
   computed: {
     ...mapGetters(['completedPomodoros']),
-    ...mapGetters('timer', ['isTimerRunning']),
+    ...mapGetters('timer', ['isTimerRunning', 'isTimerComplete']),
   },
 };
 
